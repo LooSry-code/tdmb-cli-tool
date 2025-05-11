@@ -1,0 +1,79 @@
+# TMDB CLI Tool
+
+Aplikasi Command Line Interface (CLI) sederhana untuk mengambil dan menampilkan data film dari The Movie Database (TMDB) API.
+
+## Fitur
+
+- Menampilkan film yang sedang tayang (**Now Playing**)
+- Menampilkan film populer (**Popular**)
+- Menampilkan film dengan rating tertinggi (**Top Rated**)
+- Menampilkan film yang akan segera tayang (**Upcoming**)
+
+## Prasyarat
+
+- [Node.js](https://nodejs.org/) (v16 atau lebih baru direkomendasikan)
+- [npm](https://www.npmjs.com/) (biasanya terinstal bersama Node.js)
+- Kunci API TMDB (v3 auth). Anda bisa mendapatkannya secara gratis di [situs web TMDB](https://www.themoviedb.org/settings/api).
+
+## Instalasi
+
+1.  **Clone repository (jika proyek ada di Git):**
+    ```bash
+    git clone <URL_REPOSITORY_ANDA>
+    cd tmdb-cli-app
+    ```
+
+2.  **Instal dependensi:**
+    ```bash
+    npm install
+    ```
+
+3.  **Konfigurasi Kunci API:**
+    * Buat file `.env` di root direktori proyek.
+    * Tambahkan Kunci API TMDB Anda ke file `.env`:
+        ```
+        TMDB_API_KEY=KUNCI_API_V3_ANDA
+        ```
+    * **Penting:** Jangan pernah menyimpan kunci API Anda langsung di dalam kode. Menggunakan file `.env` adalah cara yang aman untuk mengelola informasi sensitif.
+
+4.  **Build aplikasi:**
+    ```bash
+    npm run build
+    ```
+    Perintah ini akan mengkompilasi kode TypeScript di direktori `src` menjadi JavaScript dan menempatkannya di direktori `dist`.
+
+5.  **(Opsional) Buat perintah CLI global:**
+    Agar dapat menjalankan aplikasi dari direktori mana pun dengan perintah `tmdb-app`:
+    ```bash
+    npm link
+    ```
+    *Catatan: Anda mungkin perlu hak administrator (misalnya, menggunakan `sudo` di macOS atau Linux) untuk menjalankan perintah ini secara global.*
+
+## Penggunaan
+
+Setelah proses build selesai (dan `npm link` jika Anda memilih untuk membuat perintah global), Anda dapat menjalankan aplikasi dengan salah satu cara berikut:
+
+**1. Menggunakan perintah global (`tmdb-app`):**
+
+```bash
+tmdb-app --type now_playing
+tmdb-app --type popular
+tmdb-app --type top_rated
+tmdb-app --type upcoming
+```
+
+**2. Menjalankan langsung dengan Node.js setelah build:**
+```
+node dist/index.js --type now_playing
+node dist/index.js --type popular
+node dist/index.js --type top_rated
+node dist/index.js --type upcoming
+```
+
+**3. Menggunakan skrip npm:**
+```
+npm start -- --type now_playing
+npm start -- --type popular
+npm start -- --type top_rated
+npm start -- --type upcoming
+```
